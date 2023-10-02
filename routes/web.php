@@ -26,8 +26,7 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 
 // Admin Section
 Route::middleware('can:admin')->group(function () {
+    Route::get('/admin/posts/create-category', [CategoryController::class, 'create'])->name('categories.create');
+    Route::post('/admin/posts/create-category', [CategoryController::class, 'store'])->name('categories.store');
     Route::resource('admin/posts', AdminPostController::class)->except('show');
-    Route::get('/admin/posts/create-category', [CategoryController::class, 'create'])->name('admin.posts.create-category');
-    Route::post('/admin/posts', [CategoryController::class, 'store'])->name('categories.store');
-
 });

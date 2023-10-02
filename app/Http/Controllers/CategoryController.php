@@ -15,16 +15,16 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'slug' => 'required|unique:categories,slug',
             'name' => 'required|unique:categories,name',
+            'slug' => 'required|unique:categories,slug',
         ]);
 
-        // Создание новой категории
-        $category = new Category();
-        $category->slug = $request->input('slug');
-        $category->name = $request->input('name');
-        $category->save();
+        Category::create([
+            'name' => $request->input('name'),
+            'slug' => $request->input('slug'),
+        ]);
         // Редирект на страницу с созданной категорией или другую страницу по вашему выбору
-        return redirect()->route('admin.posts.create-category')->with('success', 'Категория успешно создана');
-        }
+        return view('admin.posts.create');
+
+    }
 }
