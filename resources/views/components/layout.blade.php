@@ -27,7 +27,7 @@
     <nav class="md:flex md:justify-between md:items-center">
         <div>
             <a href="/">
-                <img src="/images/logo.svg" alt="Laracasts Logo" width="155" height="20">
+                <img src="/images/logo.svg" alt="TrioBrother-s Logo" width="155" height="20">
             </a>
         </div>
 
