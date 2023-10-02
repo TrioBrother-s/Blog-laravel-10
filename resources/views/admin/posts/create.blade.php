@@ -2,6 +2,10 @@
     <x-setting heading="Publish New Post">
         <form method="POST" action="/admin/posts" enctype="multipart/form-data">
             @csrf
+            <x-form.input name="slug" placeholder="Slug" />
+            <x-form.input name="name" placeholder="Name" />
+
+            <x-form.button>Создать категорию</x-form.button>
 
             <x-form.input name="title" required />
             <x-form.input name="slug" required />

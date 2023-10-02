@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\PostController;
@@ -26,4 +27,7 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 // Admin Section
 Route::middleware('can:admin')->group(function () {
     Route::resource('admin/posts', AdminPostController::class)->except('show');
+    Route::get('/admin/posts/create-category', [CategoryController::class, 'create'])->name('admin.posts.create-category');
+    Route::post('/admin/posts', [CategoryController::class, 'store'])->name('categories.store');
+
 });

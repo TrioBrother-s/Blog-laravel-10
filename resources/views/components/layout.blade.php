@@ -27,7 +27,8 @@
         <nav class="md:flex md:justify-between md:items-center">
             <div>
                 <a href="/">
-                   <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
+{{--                   <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">--}}
+                    Backend
                 </a>
             </div>
 
@@ -56,6 +57,14 @@
                                 Новый Пост
                                 {{--New Post--}}
                             </x-dropdown-item>
+                        <x-dropdown-item
+                            href="/admin/posts/create-category"
+                            :active="request()->is('admin/posts/create-category')"
+                        >
+                            Новый тег
+                            {{--New Post--}}
+                        </x-dropdown-item>
+
                         @endadmin
 
                         <x-dropdown-item
@@ -81,11 +90,6 @@
                         Log In
                     </a>
                 @endauth
-
-{{--                <a href="#newsletter"--}}
-{{--                   class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">--}}
-{{--                    Subscribe for Updates--}}
-{{--                </a>--}}
             </div>
         </nav>
 
