@@ -1,6 +1,6 @@
 <x-layout>
     <x-setting-category heading="Создание тега">
-    <form method="POST" action="{{ route('categories.store') }}">
+    <form method="POST" action="/admin/posts/create-category">
         @csrf
 
         <!-- Поля для категории -->
