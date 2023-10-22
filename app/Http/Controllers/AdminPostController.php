@@ -25,8 +25,6 @@ class AdminPostController extends Controller
             'user_id' => request()->user()->id,
             'thumbnail' => request()->file('thumbnail')->store('thumbnails')
         ]));
-
-
         return redirect('/');
     }
 

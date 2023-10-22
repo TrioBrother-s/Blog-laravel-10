@@ -25,6 +25,5 @@ class CategoryController extends Controller
         ]);
         // Редирект на страницу с созданной категорией или другую страницу по вашему выбору
         return view('admin.posts.create');
-
     }
 }

@@ -2,25 +2,41 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
-        $user = User::factory()->create([
-            'name' => 'John Doe'
-        ]);
+        $adminRole = Role::where('name', 'admin')->first();
 
-        Post::factory(5)->create([
-            'user_id' => $user->id
-        ]);
+    if (!$adminRole) {
+        $adminRole = Role::create(['name' => 'admin']);
+    }
+
+    User::create([
+        'name' => 'kemper',
+        'username' => 'kemper969',
+        'email' => 'kemper@mail.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('kemper123'),
+        'remember_token' => Str::random(60),
+    ])->assignRole($adminRole);
+
+    User::create([
+        'name' => 'Normal user',
+        'username' => 'user123',
+        'email' => 'user@example.com',
+        'email_verified_at' => now(),
+        'password' => Hash::make('12345678'),
+        'remember_token' => Str::random(60),
+    ]);
+
     }
 }
+
